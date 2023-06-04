@@ -1,10 +1,10 @@
 const { Model, DataTypes } = require('sequelize');
-
+const bcyrpt = require('bcrypt');
 const sequelize = require('../config/connection');
 
-class ProductTag extends Model {}
+class User extends Model {}
 
-ProductTag.init(
+User.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -12,20 +12,16 @@ ProductTag.init(
       autoIncrement: true,
       allowNull: false
     },
-    product_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'product',
-        key: 'id',
-        unique: false
-      }
+    username: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
     },
-    tag_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'tag',
-        key: 'id',
-        unique: false
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [8],
       }
     }
   },
@@ -34,8 +30,8 @@ ProductTag.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'product_tag',
+    modelName: 'user',
   }
 );
 
-module.exports = ProductTag;
+module.exports = User;
