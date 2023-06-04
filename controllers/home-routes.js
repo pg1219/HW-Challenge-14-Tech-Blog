@@ -30,7 +30,7 @@ router.get('/post/:id', async (req, res) => {
       include: [
         {
           model: User,
-          attributes: ['name'],
+          attributes: ['username'],
         },
         {
           model: Comment,
@@ -39,10 +39,10 @@ router.get('/post/:id', async (req, res) => {
       ],
     });
 
-    const project = projectData.get({ plain: true });
+    const post = postData.get({ plain: true });
 
-    res.render('project', {
-      ...project,
+    res.render('post', {
+      ...post,
       logged_in: req.session.logged_in
     });
   } catch (err) {
