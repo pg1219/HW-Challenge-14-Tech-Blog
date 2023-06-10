@@ -1,11 +1,11 @@
-const newCommentHandler = async (event) {
+const newCommentHandler = async (event) => {
     event.preventDefault();
 
-    const commentId = document.querySelector('.new-comment-form').dataset.post_id;
+    const commentId = document.querySelector('.new-comment-form').dataset.comment_id;
     const commentBody = document.querySelector('#comment-body').value.trim();
 
     if (commentId && commentBody) {
-        const response = await fetch('/api/comments', {
+        const response = await fetch('/api/comment', {
             method: 'POST',
             body: JSON.stringify({ commentId, commentBody }),
             headers: {
