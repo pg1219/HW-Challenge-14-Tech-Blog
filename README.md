@@ -36,5 +36,5 @@ Repo: https://github.com/pg1219/HW-Challenge-14-Tech-Blog
 
 Preview image of deployed application
 
-![alt](./hw14mockup4.png)
+![alt](./hw14mockup.png)
 
