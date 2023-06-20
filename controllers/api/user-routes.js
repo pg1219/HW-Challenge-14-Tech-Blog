@@ -18,7 +18,7 @@ router.post('/', async (req, res) => {
 
 router.post('/login', async (req, res) => {
   try {
-    const userData = await User.findOne({ where: { username: req.body.username } });
+    const userData = await User.findOne({ where: { email: req.body.email } });
 
     if (!userData) {
       res
@@ -45,8 +45,11 @@ router.post('/login', async (req, res) => {
 
   } catch (err) {
     res.status(400).json(err);
+    console.log(err)
+    console.log(req.body.email)
   }
 });
+
 
 router.post('/logout', (req, res) => {
   if (req.session.logged_in) {
